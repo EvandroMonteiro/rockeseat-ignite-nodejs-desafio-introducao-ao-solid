@@ -1,0 +1,111 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "User Management Documentation",
+    "description": "This is an user management API",
+    "version": "1.0.0",
+    "contact": {
+      "email": "goodvandro@gmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Cria um novo utilizador",
+        "description": "Permite criar um novo utilizador",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Fulano",
+                  "email": "fulano@email.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "User already exists!"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Listagem de utilizador",
+        "description": "Lista todos os utilizadores cadastrados",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "example": [
+                    {
+                      "id": "af2a49fd-aefa-403b-a7ae-908676c1ba28",
+                      "admin": false,
+                      "name": "Fulano",
+                      "email": "fulano@email.com",
+                      "created_at": "2022-01-06T10:47:27.321Z",
+                      "updated_at": "2022-01-06T10:47:27.321Z"
+                    },
+                    {
+                      "id": "af2a49fd-aefa-403b-a7ae-908676c1ba10",
+                      "admin": false,
+                      "name": "Beltrano",
+                      "email": "beltrano@email.com",
+                      "created_at": "2022-01-06T10:47:27.321Z",
+                      "updated_at": "2022-01-06T10:47:27.321Z"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not exists!"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Define Admin",
+        "description": "Permite tornar um utilizador em administrador",
+        "requestBody": {
+          "content": {
+            
+          }
+        }
+      }
+    }
+  }
+}
